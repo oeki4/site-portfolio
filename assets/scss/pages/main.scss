@@ -1,0 +1,63 @@
+@import '/assets/scss/main.scss';
+
+.info {
+  width: 100%;
+  background: rgb(51,28,82);
+  background: linear-gradient(90deg, $purple 0%, $dark-pink 100%);
+  height: calc(100vh - 100px);
+  position: relative;
+
+  &__inner {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+    &-title {
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 700;
+      font-size: 112px;
+      color: $transparent-pink;
+      margin-bottom: 30px;
+      z-index: 2;
+    }
+
+    &-subtitle {
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 500;
+      font-size: 42px;
+      color: $white;
+      margin-bottom: 20px;
+      z-index: 2;
+
+      &--medium {
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 400;
+        font-size: 52px;
+        color: $white;
+        z-index: 2;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    z-index: 1;
+
+    @media(max-width: 900px) {
+      display: none;
+    }
+  }
+}
+
+.social-links {
+
+  &__item {
+    margin: 0 10px;
+  }
+}

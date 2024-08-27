@@ -1,0 +1,18 @@
+@import "assets/scss/main.scss";
+
+.logo {
+  transition: .3s;
+  transform-origin: left top;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &__link {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    color: $white;
+    font-size: 40px;
+    text-decoration: none;
+  }
+}
