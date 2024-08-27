@@ -57,7 +57,28 @@
 
 .social-links {
 
+  display: flex;
   &__item {
-    margin: 0 10px;
+    margin-right: 20px;
+  }
+
+  &__link {
+
+  }
+
+  &__svg {
+    g {
+      path {
+        transition: .3s;
+      }
+    }
+
+    &:hover {
+      g {
+        path {
+          fill: #DABAFE;
+        }
+      }
+    }
   }
 }
