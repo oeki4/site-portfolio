@@ -10,14 +10,23 @@
     width: 80%;
     margin: auto;
     display: grid;
-    grid-template-columns: 100px auto minmax(150px, 200px);
-    column-gap: 50px;
+    grid-template-columns: min-content auto minmax(150px, 200px);
+    column-gap: 30px;
     height: 100%;
     align-items: center;
+
+    @media(max-width: 900px) {
+      grid-template-columns: min-content;
+      justify-content: center;
+    }
   }
 
   &__menu {
     margin-left: 30px;
+
+    @media(max-width: 900px) {
+      display: none;
+    }
   }
 
   &__menu-list {
@@ -89,5 +98,9 @@
     path {
       fill: $white;
     }
+  }
+
+  @media(max-width: 900px) {
+    display: none;
   }
 }

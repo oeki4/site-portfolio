@@ -1,13 +1,10 @@
 <template>
   <div class="logo">
-    <NuxtLink class="logo__link" to="/">
-      MySite
-    </NuxtLink>
+    <NuxtLink class="logo__link" to="/"> MyPortfolio </NuxtLink>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import 'assets/scss/components/logo.scss';
+@import "assets/scss/components/logo.scss";
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

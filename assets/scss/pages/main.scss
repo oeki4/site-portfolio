@@ -4,16 +4,14 @@
   width: 100%;
   background: rgb(51,28,82);
   background: linear-gradient(90deg, $purple 0%, $dark-pink 100%);
-  height: calc(100vh - 100px);
+  min-height: calc(100vh - 200px);
   position: relative;
 
   &__inner {
     width: 80%;
     margin: auto;
-    display: flex;
     height: 100%;
-    flex-direction: column;
-    justify-content: center;
+    padding: 150px 0;
 
     &-title {
       font-family: 'Lexend Deca', sans-serif;
@@ -22,6 +20,14 @@
       color: $transparent-pink;
       margin-bottom: 30px;
       z-index: 2;
+
+      @media(max-width: 700px) {
+        font-size: 78px;
+      }
+
+      @media(max-width: 500px) {
+        font-size: 54px;
+      }
     }
 
     &-subtitle {
@@ -32,6 +38,14 @@
       margin-bottom: 20px;
       z-index: 2;
 
+      @media(max-width: 700px) {
+        font-size: 29px;
+      }
+
+      @media(max-width: 500px) {
+        font-size: 20px;
+      }
+
       &--medium {
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 400;
@@ -39,7 +53,20 @@
         color: $white;
         z-index: 2;
         margin-bottom: 20px;
+
+        @media(max-width: 700px) {
+          font-size: 36px;
+        }
+
+        @media(max-width: 500px) {
+          font-size: 25px;
+        }
       }
+    }
+
+
+    @media(max-width: 700px) {
+      padding: 75px 0;
     }
   }
 
@@ -49,9 +76,13 @@
     right: 0;
     z-index: 1;
 
-    @media(max-width: 900px) {
+    @media(max-width: 1300px) {
       display: none;
     }
+  }
+
+  @media(max-width: 700px) {
+    min-height: min-content;
   }
 }
 
@@ -60,10 +91,10 @@
   display: flex;
   &__item {
     margin-right: 20px;
-  }
 
-  &__link {
-
+    &--footer {
+      margin: 0 10px;
+    }
   }
 
   &__svg {
@@ -79,6 +110,366 @@
           fill: #DABAFE;
         }
       }
+    }
+  }
+
+  &--footer {
+    margin-top: 20px;
+  }
+}
+
+.experience {
+  background-color: $experience-bg;
+
+  &__inner {
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: minmax(min-content, 250px) minmax(min-content, 350px) 50%;
+    grid-column-gap: 20px;
+
+    @media(max-width: 1100px) {
+      grid-template-columns: auto;
+      grid-template-rows: min-content min-content;
+      grid-row-gap: 20px;
+    }
+  }
+
+  &__fact {
+    display: flex;
+    align-items: center;
+
+    &-number {
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      color: $white;
+
+      @media(max-width: 700px) {
+        font-size: 50px;
+      }
+    }
+
+    &-text {
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: $experience-text;
+      text-transform: uppercase;
+      margin-left: 15px;
+
+      @media(max-width: 700px) {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+
+.skills {
+  display: grid;
+  grid-column-gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 50px));
+  align-items: center;
+  grid-row-gap: 25px;
+
+  &-img {
+    width: 100%;
+    padding: 5px;
+    background-color: $experience-bg;
+    border-radius: 5px;
+  }
+}
+
+.title {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 500;
+  color: $experience-bg;
+  font-size: 32px;
+  margin-bottom: 30px;
+
+  &--slide {
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+    text-align: start;
+    margin-bottom: 20px;
+  }
+
+  &--feedback {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.5;
+    margin-bottom: 150px;
+  }
+
+  &--highlight {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.5;
+    color: $highlight-word;
+
+    @media(max-width: 700px) {
+      line-height: 1.3;
+      font-size: 26px;
+    }
+  }
+
+  @media(max-width: 700px) {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+}
+
+.text {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 300;
+  color: $about-text;
+  font-size: 20px;
+  max-width: 500px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+
+  &--slide {
+    font-size: 14px;
+    width: 100%;
+    text-align: start;
+    color: $experience-bg;
+  }
+
+  &--feedback {
+    font-weight: 700;
+    font-size: 20px;
+    color: $experience-bg;
+  }
+
+  @media(max-width: 700px) {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+.about {
+  background: url(/assets/img/about-bg.png);
+  background-size: 100% 100%;
+  min-height: 80vh;
+
+  &__inner {
+    width: 80%;
+    padding: 50px 0;
+    margin: auto;
+
+    &-skills {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      height: min-content;
+
+      @media(max-width: 700px) {
+        justify-content: start;
+      }
+    }
+  }
+
+  @media(max-width: 1600px) {
+    min-height: 100vh;
+  }
+
+  @media(max-width: 1000px) {
+    background-color: #E1EBED;
+    background-image: none;
+  }
+
+  @media(max-width: 700px) {
+    min-height: min-content;
+  }
+}
+
+.projects {
+  min-height: 80vh;
+  background-color: #E1EBED;
+
+  &__inner {
+    width: 80%;
+    padding: 50px 0;
+    margin: auto;
+  }
+}
+
+.carousel {
+  &__slide {
+    background-color: $slide-bg;
+    margin: 0 25px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    align-items: start;
+
+    &-img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    &-link {
+      width: 100%;
+      background-color: $purple;
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      padding: 10px 0;
+      color: $white;
+      border-radius: 5px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s;
+
+      &:hover {
+        background-color: #6C5191;
+      }
+    }
+
+    &-icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+.feedback {
+  min-height: 60vh;
+  background-color: $feedback-bg;
+
+  &__inner {
+    width: 80%;
+    padding: 50px 0;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media(max-width: 800px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__interests {
+    width: 55%;
+    max-width: 700px;
+
+    &-buttons {
+      width: 100%;
+    }
+
+    &-btn {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    &-btn input[type=radio] {
+      display: none;
+    }
+
+    &-btn label {
+      display: inline-block;
+      cursor: pointer;
+      padding: 0 15px;
+      line-height: 34px;
+      border: 2px solid $interests-btn;
+      border-radius: 5px;
+      user-select: none;
+      transition: .3s;
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 500;
+      color: $interests-btn;
+      font-size: 16px;
+      margin-bottom: 20px;
+
+
+      @media(max-width: 700px) {
+        font-size: 14px;
+      }
+    }
+
+    &-btn input[type=radio]:checked + label {
+      background: $interests-btn;
+      color: $white;
+    }
+
+    &-btn label:hover {
+      color: $interests-btn-hover;
+      border-color: $interests-btn-hover;
+    }
+
+    @media(max-width: 800px) {
+      width: 100%;
+    }
+  }
+
+  &__form {
+    width: 40%;
+    max-width: 550px;
+
+    &-input {
+      width: calc(100% - 22px);
+      padding: 10px 11px;
+      outline: none;
+      border: 1px solid $feedback-input;
+      border-radius: 5px;
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: $feedback-input;
+      transition: 50ms;
+      margin-bottom: 20px;
+      resize: none;
+
+      &::placeholder {
+        color: $feedback-input;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      &:focus {
+        border: 3px solid $feedback-input;
+        padding: 10px 10px;
+      }
+    }
+
+    &-btn {
+      padding: 12px 22px;
+      width: 100%;
+      outline: none;
+      border: 1px solid $feedback-input;
+      background-color: $interests-btn;
+      border-radius: 5px;
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: $white;
+      transition: .3s;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      img {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        background-color: #6C5191;
+      }
+    }
+
+    @media(max-width: 800px) {
+      width: 100%;
     }
   }
 }
