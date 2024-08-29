@@ -197,7 +197,26 @@ const { data: projects, error } = await useFetch(
               v-if="!error"
               :key="index"
             >
-              <img :src="project.image" alt="" class="carousel__slide-img" />
+              <Fancybox
+                :options="{
+                  Carousel: {
+                    infinite: false,
+                  },
+                }"
+              >
+                <a
+                  data-fancybox="gallery"
+                  v-for="(image, index) in project.images"
+                  :href="image"
+                >
+                  <img
+                    v-if="index == 0"
+                    :src="image"
+                    alt=""
+                    class="carousel__slide-img"
+                  />
+                </a>
+              </Fancybox>
               <h1 class="title title--slide">{{ project.title }}</h1>
               <p class="text text--slide">
                 {{ project.subtitle }}
