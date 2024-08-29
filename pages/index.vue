@@ -1,8 +1,17 @@
+<script setup lang="ts">
+const config = useRuntimeConfig();
+
+const { data: projects, error } = await useFetch(
+  `${config.public.apiUrl}/projects`,
+);
+</script>
+/
+
 <template>
   <section id="home" class="info">
     <img
       class="info__photo"
-      src="/assets/img/programmer2.png"
+      src="/assets/img/programmer.png"
       alt="programmer"
     />
     <div class="info__inner">
@@ -183,17 +192,21 @@
               },
             }"
           >
-            <slide v-for="slide in 10" :key="slide">
-              <img
-                src="https://i.imgur.com/eyZ9Sp0.png"
-                alt=""
-                class="carousel__slide-img"
-              />
-              <h1 class="title title--slide">UIX Portfolio Website</h1>
+            <slide
+              v-for="(project, index) in projects"
+              v-if="!error"
+              :key="index"
+            >
+              <img :src="project.image" alt="" class="carousel__slide-img" />
+              <h1 class="title title--slide">{{ project.title }}</h1>
               <p class="text text--slide">
-                Website Landing Page for a UI/UX Designer Portfolio
+                {{ project.subtitle }}
               </p>
-              <a class="carousel__slide-link" href="https://www.google.com">
+              <a
+                class="carousel__slide-link"
+                :href="project.github"
+                target="_blank"
+              >
                 <svg
                   width="20"
                   height="20"
@@ -282,4 +295,3 @@
 <style lang="scss" scoped>
 @import "/assets/scss/pages/main.scss";
 </style>
-<script setup lang="ts"></script>
