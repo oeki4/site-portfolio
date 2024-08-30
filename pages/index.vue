@@ -1,12 +1,52 @@
 <script setup lang="ts">
+interface Project {
+  title: string;
+  subtitle: string;
+  images: string[];
+  github: string;
+}
 const config = useRuntimeConfig();
+import { useForm } from "vee-validate";
+const { values, defineField } = useForm();
 
-const { data: projects, error } = await useFetch(
+const { data: projects } = await useFetch<Project[]>(
   `${config.public.apiUrl}/projects`,
 );
-</script>
-/
 
+const [username, usernameAttrs] = defineField("username");
+const [communication, communicationAttrs] = defineField("communication");
+const [comment, commentAttrs] = defineField("comment");
+const [subject, subjectAttrs] = defineField("subject");
+
+const resultMessage = ref("");
+
+const onSubmit = async () => {
+  resultMessage.value = "";
+  if (!communication.value || !username.value) {
+    resultMessage.value = "Заполнены не все необходимые поля!";
+    return;
+  }
+  const { data: feedback, error: feedbackErr } = await useAsyncData(
+    "feedback",
+    () =>
+      $fetch(`${config.public.apiUrl}/feedback`, {
+        method: "POST",
+        body: JSON.stringify({
+          username: username.value,
+          communication: communication.value,
+          comment: comment.value,
+          subject: subject.value,
+        }),
+      }),
+  );
+
+  if (feedback) {
+    resultMessage.value = "Заявка успешно отправлена!";
+  } else {
+    resultMessage.value = "При отправке заявки произошла ошибка!";
+  }
+};
+</script>
 <template>
   <section id="home" class="info">
     <img
@@ -167,92 +207,90 @@ const { data: projects, error } = await useFetch(
       <h1 class="title">My Projects</h1>
       <p class="text">Some Things I've built so far</p>
       <div>
-        <template>
-          <carousel
-            :items-to-show="5"
-            wrap-around
-            :breakpoints="{
-              230: {
-                itemsToShow: 1.5,
-              },
-              530: {
-                itemsToShow: 2.5,
-              },
-              730: {
-                itemsToShow: 3,
-              },
-              1130: {
-                itemsToShow: 4,
-              },
-              1530: {
-                itemsToShow: 5,
-              },
-              8530: {
-                itemsToShow: 6,
-              },
-            }"
+        <carousel
+          :items-to-show="5"
+          wrap-around
+          :breakpoints="{
+            230: {
+              itemsToShow: 1.5,
+            },
+            530: {
+              itemsToShow: 2.5,
+            },
+            730: {
+              itemsToShow: 3,
+            },
+            1130: {
+              itemsToShow: 4,
+            },
+            1530: {
+              itemsToShow: 5,
+            },
+            8530: {
+              itemsToShow: 6,
+            },
+          }"
+        >
+          <slide
+            v-for="(project, index) in projects"
+            v-if="projects"
+            :key="index"
           >
-            <slide
-              v-for="(project, index) in projects"
-              v-if="!error"
-              :key="index"
+            <Fancybox
+              :options="{
+                Carousel: {
+                  infinite: false,
+                },
+              }"
             >
-              <Fancybox
-                :options="{
-                  Carousel: {
-                    infinite: false,
-                  },
-                }"
-              >
-                <a
-                  data-fancybox="gallery"
-                  v-for="(image, index) in project.images"
-                  :href="image"
-                >
-                  <img
-                    v-if="index == 0"
-                    :src="image"
-                    alt=""
-                    class="carousel__slide-img"
-                  />
-                </a>
-              </Fancybox>
-              <h1 class="title title--slide">{{ project.title }}</h1>
-              <p class="text text--slide">
-                {{ project.subtitle }}
-              </p>
               <a
-                class="carousel__slide-link"
-                :href="project.github"
-                target="_blank"
+                data-fancybox="gallery"
+                v-for="(image, index) in project.images"
+                :href="image"
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 30 30"
-                  class="carousel__slide-icon"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_48_30)">
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M15 0C23.2845 0 30 6.88489 30 15.3794C30 22.1729 25.707 27.9359 19.7505 29.9714C18.99 30.1229 18.72 29.6427 18.72 29.2332C18.72 28.7262 18.738 27.0702 18.738 25.0122C18.738 23.5782 18.258 22.6423 17.7195 22.1653C21.06 21.7843 24.57 20.4837 24.57 14.5767C24.57 12.8967 23.988 11.5257 23.025 10.4487C23.181 10.0602 23.6955 8.49593 22.878 6.37793C22.878 6.37793 21.621 5.96583 18.7575 7.95483C17.559 7.61433 16.275 7.44301 15 7.43701C13.725 7.44301 12.4425 7.61433 11.2455 7.95483C8.379 5.96583 7.119 6.37793 7.119 6.37793C6.3045 8.49593 6.819 10.0602 6.9735 10.4487C6.015 11.5257 5.4285 12.8967 5.4285 14.5767C5.4285 20.4687 8.931 21.7892 12.2625 22.1777C11.8335 22.5617 11.445 23.2391 11.31 24.2336C10.455 24.6266 8.283 25.3068 6.945 22.9563C6.945 22.9563 6.1515 21.4786 4.6455 21.3706C4.6455 21.3706 3.183 21.3512 4.5435 22.3052C4.5435 22.3052 5.526 22.7777 6.2085 24.5552C6.2085 24.5552 7.089 27.3001 11.262 26.3701C11.2695 27.6556 11.283 28.8672 11.283 29.2332C11.283 29.6397 11.007 30.1154 10.2585 29.9729C4.2975 27.9404 0 22.1744 0 15.3794C0 6.88489 6.717 0 15 0Z"
-                      fill="#ffffff"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_48_30">
-                      <rect width="30" height="30" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                View Code
+                <img
+                  v-if="index == 0"
+                  :src="image"
+                  alt=""
+                  class="carousel__slide-img"
+                />
               </a>
-            </slide>
-          </carousel>
-        </template>
+            </Fancybox>
+            <h1 class="title title--slide">{{ project.title }}</h1>
+            <p class="text text--slide">
+              {{ project.subtitle }}
+            </p>
+            <a
+              class="carousel__slide-link"
+              :href="project.github"
+              target="_blank"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 30 30"
+                class="carousel__slide-icon"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_48_30)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M15 0C23.2845 0 30 6.88489 30 15.3794C30 22.1729 25.707 27.9359 19.7505 29.9714C18.99 30.1229 18.72 29.6427 18.72 29.2332C18.72 28.7262 18.738 27.0702 18.738 25.0122C18.738 23.5782 18.258 22.6423 17.7195 22.1653C21.06 21.7843 24.57 20.4837 24.57 14.5767C24.57 12.8967 23.988 11.5257 23.025 10.4487C23.181 10.0602 23.6955 8.49593 22.878 6.37793C22.878 6.37793 21.621 5.96583 18.7575 7.95483C17.559 7.61433 16.275 7.44301 15 7.43701C13.725 7.44301 12.4425 7.61433 11.2455 7.95483C8.379 5.96583 7.119 6.37793 7.119 6.37793C6.3045 8.49593 6.819 10.0602 6.9735 10.4487C6.015 11.5257 5.4285 12.8967 5.4285 14.5767C5.4285 20.4687 8.931 21.7892 12.2625 22.1777C11.8335 22.5617 11.445 23.2391 11.31 24.2336C10.455 24.6266 8.283 25.3068 6.945 22.9563C6.945 22.9563 6.1515 21.4786 4.6455 21.3706C4.6455 21.3706 3.183 21.3512 4.5435 22.3052C4.5435 22.3052 5.526 22.7777 6.2085 24.5552C6.2085 24.5552 7.089 27.3001 11.262 26.3701C11.2695 27.6556 11.283 28.8672 11.283 29.2332C11.283 29.6397 11.007 30.1154 10.2585 29.9729C4.2975 27.9404 0 22.1744 0 15.3794C0 6.88489 6.717 0 15 0Z"
+                    fill="#ffffff"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_48_30">
+                    <rect width="30" height="30" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+              View Code
+            </a>
+          </slide>
+        </carousel>
       </div>
     </div>
   </section>
@@ -266,47 +304,91 @@ const { data: projects, error } = await useFetch(
         <p class="text text--feedback">I'm interested in...</p>
         <div>
           <div class="feedback__interests-btn">
-            <input id="radio-1" type="radio" name="radio" value="1" />
+            <input
+              id="radio-1"
+              type="radio"
+              name="radio"
+              v-model="subject"
+              v-bind="subjectAttrs"
+              value="1"
+            />
             <label for="radio-1">Ecommerce Website</label>
           </div>
           <div class="feedback__interests-btn">
-            <input id="radio-2" type="radio" name="radio" value="2" />
+            <input
+              id="radio-2"
+              type="radio"
+              name="radio"
+              v-model="subject"
+              v-bind="subjectAttrs"
+              value="2"
+            />
             <label for="radio-2">Saas website</label>
           </div>
           <div class="feedback__interests-btn">
-            <input id="radio-3" type="radio" name="radio" value="3" />
+            <input
+              id="radio-3"
+              type="radio"
+              name="radio"
+              v-model="subject"
+              v-bind="subjectAttrs"
+              value="3"
+            />
             <label for="radio-3">Landing Page</label>
           </div>
           <div class="feedback__interests-btn">
-            <input id="radio-4" type="radio" name="radio" value="4" />
+            <input
+              id="radio-4"
+              type="radio"
+              name="radio"
+              v-model="subject"
+              v-bind="subjectAttrs"
+              value="4"
+            />
             <label for="radio-4">Portfolio</label>
           </div>
           <div class="feedback__interests-btn">
-            <input id="radio-5" type="radio" name="radio" value="5" />
+            <input
+              id="radio-5"
+              type="radio"
+              name="radio"
+              v-model="subject"
+              v-bind="subjectAttrs"
+              value="5"
+            />
             <label for="radio-5">Blog Website</label>
           </div>
         </div>
       </div>
-      <div class="feedback__form">
+      <form @submit.prevent="onSubmit" class="feedback__form">
         <input
           type="text"
           class="feedback__form-input"
+          v-model="username"
+          v-bind="usernameAttrs"
           placeholder="Your name"
         />
         <input
           type="text"
           class="feedback__form-input"
+          v-model="communication"
+          v-bind="communicationAttrs"
           placeholder="Your email"
         />
         <textarea
           rows="10"
           class="feedback__form-input feedback__form-input--high"
+          v-model="comment"
+          v-bind="commentAttrs"
           placeholder="Your message"
         />
+        <p v-if="resultMessage" class="feedback__form-result">
+          {{ resultMessage }}
+        </p>
         <button class="feedback__form-btn">
           <img src="/assets/img/airplane.svg" alt="" />Submit
         </button>
-      </div>
+      </form>
     </div>
   </section>
 </template>

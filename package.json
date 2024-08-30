@@ -13,6 +13,7 @@
     "@fancyapps/ui": "^5.0.36",
     "@nuxt/image": "^1.7.0",
     "nuxt": "^3.13.0",
+    "vee-validate": "^4.13.2",
     "vue": "latest",
     "vue3-carousel-nuxt": "^1.1.2"
   },
