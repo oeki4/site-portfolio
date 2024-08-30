@@ -41,25 +41,36 @@
 }
 
 @font-face {
-  font-family: 'Lexend Deca';
+  font-family: 'Sofia Sans';
+  font-weight: 800;
+  font-style: normal;
+  src: url(assets/fonts/sofia-sans/ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Sofia Sans';
   font-weight: 700;
-  src: url(assets/fonts/lexend-deca/Bold.woff) format('woff');
+  font-style: normal;
+  src: url(assets/fonts/sofia-sans/Bold.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Lexend Deca';
+  font-family: 'Sofia Sans';
   font-weight: 500;
-  src: url(assets/fonts/lexend-deca/Medium.woff) format('woff');
+  font-style: normal;
+  src: url(assets/fonts/sofia-sans/Medium.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Lexend Deca';
+  font-family: 'Sofia Sans';
   font-weight: 400;
-  src: url(assets/fonts/lexend-deca/Regular.woff) format('woff');
+  font-style: normal;
+  src: url(assets/fonts/sofia-sans/Regular.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Lexend Deca';
+  font-family: 'Sofia Sans';
   font-weight: 300;
-  src: url(assets/fonts/lexend-deca/Light.woff) format('woff');
+  font-style: normal;
+  src: url(assets/fonts/sofia-sans/Light.ttf) format('truetype');
 }
