@@ -190,7 +190,7 @@
   }
 
   @media(max-width: 700px) {
-    grid-template-columns: repeat(auto-fit, minmax(min-content, 35px));
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 40px));
     grid-row-gap: 20px;
     grid-column-gap: 20px;
   }
@@ -327,6 +327,10 @@
     width: 80%;
     padding: 50px 0;
     margin: auto;
+  }
+
+  @media(max-width: 700px) {
+    min-height: min-content;
   }
 }
 
