@@ -7,19 +7,21 @@
       <nav class="header__menu">
         <ul class="header__menu-list">
           <li class="header__menu-item">
-            <NuxtLink to="/#home" class="header__menu-link"> Home </NuxtLink>
+            <NuxtLink to="/#home" class="header__menu-link"> Главная </NuxtLink>
           </li>
           <li class="header__menu-item">
-            <NuxtLink to="/#about" class="header__menu-link"> About </NuxtLink>
+            <NuxtLink to="/#about" class="header__menu-link">
+              Обо мне
+            </NuxtLink>
           </li>
           <li class="header__menu-item">
             <NuxtLink href="/#projects" class="header__menu-link">
-              Projects
+              Проекты
             </NuxtLink>
           </li>
           <li class="header__menu-item">
             <NuxtLink href="/#feedback" class="header__menu-link">
-              Feedback
+              Связаться
             </NuxtLink>
           </li>
         </ul>
@@ -38,7 +40,7 @@
             fill="#331C52"
           />
         </svg>
-        Hire me
+        Написать
       </a>
     </div>
   </header>

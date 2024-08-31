@@ -55,13 +55,13 @@ const onSubmit = async () => {
       alt="programmer"
     />
     <div class="info__inner">
-      <h3 class="info__inner-subtitle">Hello&#128075;,</h3>
-      <h1 class="info__inner-title">I'm a web<br />Developer</h1>
-      <h2 class="info__inner-subtitle--medium">I build things for web</h2>
+      <h3 class="info__inner-subtitle">Привет&#128075;,</h3>
+      <h1 class="info__inner-title">Нужен сайт?</h1>
+      <h2 class="info__inner-subtitle--medium">Я постараюсь помочь!</h2>
       <ul class="social-links">
         <li class="social-links__item">
           <a
-            href="https://github.com/Nikita-Minov"
+            href="https://github.com/oeki4"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -151,12 +151,12 @@ const onSubmit = async () => {
   <section class="experience">
     <div class="experience__inner">
       <div class="experience__fact">
-        <p class="experience__fact-number">3</p>
-        <p class="experience__fact-text">Years of experience</p>
+        <p class="experience__fact-number">&gt;2</p>
+        <p class="experience__fact-text">лет опыта</p>
       </div>
       <div class="experience__fact">
-        <p class="experience__fact-number">12</p>
-        <p class="experience__fact-text">projects completed around the world</p>
+        <p class="experience__fact-number">&gt;10</p>
+        <p class="experience__fact-text">разработанных за это время проектов</p>
       </div>
       <div class="skills">
         <img class="skills-img" src="/assets/img/skills/js.svg" alt="" />
@@ -171,17 +171,17 @@ const onSubmit = async () => {
   <section id="about" class="about">
     <div class="about__inner">
       <div>
-        <h1 class="title">About me</h1>
+        <h1 class="title">Кто я?</h1>
         <p class="text">
-          As A Web Developer, I Am Responsible For Designing And Developing Web
-          Pages. My Primary Focus Is To Create Responsive, User-Friendly
-          Experiences That Meet The Needs Of A Diverse Online Audience.
+          Я — фуллстек-разработчик, специализирующийся на JavaScript(а также
+          TypeScript) и его экосистеме. Именно поэтому в ходе разработки я
+          использую библиотеки и фреймворки для JS.
         </p>
       </div>
       <div class="about__inner-skills">
         <div>
-          <h1 class="title">My Skills</h1>
-          <p class="text">Technologies I've been working with recently</p>
+          <h1 class="title">Что я умею?</h1>
+          <p class="text">Технологии, с которыми я работаю чаще всего</p>
           <div class="skills">
             <img class="skills-img" src="/assets/img/skills/js.svg" alt="" />
             <img class="skills-img" src="/assets/img/skills/ts.svg" alt="" />
@@ -204,8 +204,8 @@ const onSubmit = async () => {
   </section>
   <section id="projects" class="projects">
     <div class="projects__inner">
-      <h1 class="title">My Projects</h1>
-      <p class="text">Some Things I've built so far</p>
+      <h1 class="title">Мои проекты</h1>
+      <p class="text">Небольшие проекты, которыми я занимался для обучения</p>
       <div>
         <carousel
           :items-to-show="5"
@@ -287,7 +287,7 @@ const onSubmit = async () => {
                   </clipPath>
                 </defs>
               </svg>
-              View Code
+              Посмотреть код
             </a>
           </slide>
         </carousel>
@@ -298,10 +298,10 @@ const onSubmit = async () => {
     <div class="feedback__inner">
       <div class="feedback__interests">
         <h1 class="title title--feedback">
-          Let's discuss<br />
-          on something <span class="title--highlight">cool</span> together
+          Давайте обсудим<br />
+          <span class="title--highlight">вашу идею</span> для проекта
         </h1>
-        <p class="text text--feedback">I'm interested in...</p>
+        <p class="text text--feedback">Мне интересно...</p>
         <div>
           <div class="feedback__interests-btn">
             <input
@@ -310,9 +310,9 @@ const onSubmit = async () => {
               name="radio"
               v-model="subject"
               v-bind="subjectAttrs"
-              value="1"
+              value="Сайт-Визитка"
             />
-            <label for="radio-1">Ecommerce Website</label>
+            <label for="radio-1">Сайт-Визитка</label>
           </div>
           <div class="feedback__interests-btn">
             <input
@@ -321,9 +321,9 @@ const onSubmit = async () => {
               name="radio"
               v-model="subject"
               v-bind="subjectAttrs"
-              value="2"
+              value="Интернет-Магазин"
             />
-            <label for="radio-2">Saas website</label>
+            <label for="radio-2">Интернет-Магазин</label>
           </div>
           <div class="feedback__interests-btn">
             <input
@@ -332,9 +332,9 @@ const onSubmit = async () => {
               name="radio"
               v-model="subject"
               v-bind="subjectAttrs"
-              value="3"
+              value="Лэндинг"
             />
-            <label for="radio-3">Landing Page</label>
+            <label for="radio-3">Лэндинг</label>
           </div>
           <div class="feedback__interests-btn">
             <input
@@ -343,9 +343,9 @@ const onSubmit = async () => {
               name="radio"
               v-model="subject"
               v-bind="subjectAttrs"
-              value="4"
+              value="Сайт для огранизации"
             />
-            <label for="radio-4">Portfolio</label>
+            <label for="radio-4">Сайт для огранизации</label>
           </div>
           <div class="feedback__interests-btn">
             <input
@@ -354,9 +354,9 @@ const onSubmit = async () => {
               name="radio"
               v-model="subject"
               v-bind="subjectAttrs"
-              value="5"
+              value="Что-то другое..."
             />
-            <label for="radio-5">Blog Website</label>
+            <label for="radio-5">Что-то другое...</label>
           </div>
         </div>
       </div>
@@ -366,27 +366,27 @@ const onSubmit = async () => {
           class="feedback__form-input"
           v-model="username"
           v-bind="usernameAttrs"
-          placeholder="Your name"
+          placeholder="Как вас зовут?"
         />
         <input
           type="text"
           class="feedback__form-input"
           v-model="communication"
           v-bind="communicationAttrs"
-          placeholder="Your email"
+          placeholder="Как я могу с вами связаться?"
         />
         <textarea
           rows="10"
           class="feedback__form-input feedback__form-input--high"
           v-model="comment"
           v-bind="commentAttrs"
-          placeholder="Your message"
+          placeholder="Есть ли дополнительные пожелания?"
         />
         <p v-if="resultMessage" class="feedback__form-result">
           {{ resultMessage }}
         </p>
         <button class="feedback__form-btn">
-          <img src="/assets/img/airplane.svg" alt="" />Submit
+          <img src="/assets/img/airplane.svg" alt="" />Я готов сотрудничать!
         </button>
       </form>
     </div>

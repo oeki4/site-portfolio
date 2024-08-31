@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <NuxtLink class="logo__link" to="/"> MyPortfolio </NuxtLink>
+    <NuxtLink class="logo__link" to="/"> OekiDev </NuxtLink>
   </div>
 </template>
 

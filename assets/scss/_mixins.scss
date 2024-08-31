@@ -5,3 +5,13 @@
   font-style: normal;
   font-feature-settings: 'locl' 0;
 }
+
+@mixin container {
+  width: 80%;
+  margin: auto;
+  height: 100%;
+
+  //@media(max-width: 1000px) {
+  //  width: 90%;
+  //}
+}

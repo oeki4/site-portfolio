@@ -7,13 +7,16 @@
   height: 100px;
 
   &__inner {
-    width: 80%;
-    margin: auto;
+    @include container;
     display: grid;
     grid-template-columns: min-content auto minmax(150px, 200px);
     column-gap: 30px;
     height: 100%;
     align-items: center;
+
+    @media(max-width: 1000px) {
+      width: 90%;
+    }
 
     @media(max-width: 900px) {
       grid-template-columns: min-content;

@@ -5,7 +5,7 @@
       <ul class="social-links social-links--footer">
         <li class="social-links__item social-links__item--footer">
           <a
-            href="https://github.com/Nikita-Minov"
+            href="https://github.com/oeki4"
             target="_blank"
             rel="noopener noreferrer"
           >
