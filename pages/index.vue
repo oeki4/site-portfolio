@@ -1,4 +1,10 @@
 <script setup lang="ts">
+useServerSeoMeta({
+  ogTitle: "OekiDev - Разработка веб-сайтов",
+  title: "OekiDev - Разработка веб-сайтов",
+  description: "OekiDev - Разработка веб-сайтов",
+  ogDescription: "OekiDev - Разработка веб-сайтов",
+});
 interface Project {
   title: string;
   subtitle: string;
@@ -205,7 +211,7 @@ const onSubmit = async () => {
   <section id="projects" class="projects">
     <div class="projects__inner">
       <h1 class="title">Мои проекты</h1>
-      <p class="text">Небольшие проекты, которыми я занимался для обучения</p>
+      <p class="text">Небольшие проекты, в которых есть примеры моего кода</p>
       <div>
         <carousel
           :items-to-show="5"
